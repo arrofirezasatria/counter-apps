@@ -36,10 +36,23 @@ export default function App() {
     setCounterList((prev) => [
       ...prev,
       {
-        id: 1,
-        text: enteredCounterText,
-        count: 12,
+        id: counterList.length++,
+        text: enteredCounterText + counterList.length++,
+        count: 0,
       },
+    ]);
+  };
+
+  const addCountHandler = (index: number) => {
+    setCounterList((prev) => [
+      ...prev,
+      { ...prev[index], count: prev[index].count++ },
+    ]);
+  };
+  const reduceCountHandler = (index: number) => {
+    setCounterList((prev) => [
+      ...prev,
+      { ...prev[index], count: prev[index].count-- },
     ]);
   };
 
@@ -51,15 +64,21 @@ export default function App() {
           style={styles.inputTextCounter}
           onChangeText={textInputHandler}
         />
-        <Button title="asdasd" onPress={addCounterListHandler} />
+        <Button title="Add Counter" onPress={addCounterListHandler} />
       </View>
       <View style={styles.containerCounterList}>
         <FlatList
           data={counterList}
+          keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => {
             return (
-              <View>
-                <Text>ad</Text>
+              <View style={styles.itemList}>
+                <Button title="+" onPress={addCountHandler(item.id)} />
+                <View style={styles.itemTextList}>
+                  <Text>{item.text}</Text>
+                  <Text>{item.count}</Text>
+                </View>
+                <Button title="-" onPress={reduceCountHandler(item.id)} />
               </View>
             );
           }}
@@ -77,6 +96,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   containerAddCounter: {
+    flex: 1,
+    flexDirection: "column",
     height: 210,
     width: "100%",
     backgroundColor: "gray",
@@ -86,5 +107,17 @@ const styles = StyleSheet.create({
     width: "100%",
     backgroundColor: "red",
   },
-  inputTextCounter: {},
+  inputTextCounter: {
+    marginTop: 100,
+    paddingTop: 20,
+    backgroundColor: "green",
+  },
+  itemList: {
+    flex: 1,
+    flexDirection: "row",
+  },
+  itemTextList: {
+    flex: 1,
+    flexDirection: "column",
+  },
 });
