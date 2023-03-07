@@ -27,18 +27,20 @@ interface ICounterList extends Array<ICounter> {}
 export default function App() {
   const [enteredCounterText, setEnteredCounterText] = useState<string>("");
   const [counterList, setCounterList] = useState<ICounterList>([]);
+  const [iterator, setIterator] = useState<number>(0);
 
   const textInputHandler = (currentText: string) => {
     setEnteredCounterText(currentText);
   };
 
   const addCounterListHandler = () => {
+    setIterator((prev) => prev + 1);
     setCounterList((prev) => [
       ...prev,
       {
-        id: counterList.length++,
+        id: iterator,
         text: enteredCounterText + counterList.length++,
-        count: 0,
+        count: 12,
       },
     ]);
   };
@@ -73,12 +75,13 @@ export default function App() {
           renderItem={({ item }) => {
             return (
               <View style={styles.itemList}>
-                <Button title="+" onPress={addCountHandler(item.id)} />
+                <Button title="+" onPress={() => addCountHandler(item.id)} />
                 <View style={styles.itemTextList}>
                   <Text>{item.text}</Text>
                   <Text>{item.count}</Text>
+                  <Text>{item.id}</Text>
                 </View>
-                <Button title="-" onPress={reduceCountHandler(item.id)} />
+                <Button title="-" />
               </View>
             );
           }}
