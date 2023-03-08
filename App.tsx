@@ -46,16 +46,17 @@ export default function App() {
   };
 
   const addCountHandler = (index: number) => {
-    setCounterList((prev) => [
-      ...prev,
-      { ...prev[index], count: prev[index].count++ },
-    ]);
+    var temp = counterList;
+    temp[index].count = temp[index].count + 1;
+    console.log(temp);
+    setCounterList(temp);
   };
+
   const reduceCountHandler = (index: number) => {
-    setCounterList((prev) => [
-      ...prev,
-      { ...prev[index], count: prev[index].count-- },
-    ]);
+    var temp = counterList;
+    temp[index].count = temp[index].count - 1;
+    console.log(temp);
+    setCounterList(temp);
   };
 
   return (
@@ -72,6 +73,7 @@ export default function App() {
         <FlatList
           data={counterList}
           keyExtractor={(item) => item.id.toString()}
+          extraData={iterator}
           renderItem={({ item }) => {
             return (
               <View style={styles.itemList}>
@@ -81,7 +83,7 @@ export default function App() {
                   <Text>{item.count}</Text>
                   <Text>{item.id}</Text>
                 </View>
-                <Button title="-" />
+                <Button title="-" onPress={() => reduceCountHandler(item.id)} />
               </View>
             );
           }}
