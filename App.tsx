@@ -39,24 +39,33 @@ export default function App() {
       ...prev,
       {
         id: iterator,
-        text: enteredCounterText + counterList.length++,
+        text: enteredCounterText,
         count: 12,
       },
     ]);
   };
 
+  const resetCounterListHandler = () => {
+    setCounterList([]);
+    setIterator(0);
+  };
+
   const addCountHandler = (index: number) => {
     var temp = counterList;
     temp[index].count = temp[index].count + 1;
-    console.log(temp);
-    setCounterList(temp);
+    setCounterList((prev) => [...temp]);
   };
 
   const reduceCountHandler = (index: number) => {
     var temp = counterList;
-    temp[index].count = temp[index].count - 1;
-    console.log(temp);
-    setCounterList(temp);
+    var tempcount = temp[index].count - 1;
+    if (tempcount > 0) {
+      temp[index].count = tempcount;
+    } else {
+      temp[index].count = 0;
+    }
+
+    setCounterList((prev) => [...temp]);
   };
 
   return (
@@ -68,12 +77,13 @@ export default function App() {
           onChangeText={textInputHandler}
         />
         <Button title="Add Counter" onPress={addCounterListHandler} />
+        <Button title="Reset" onPress={resetCounterListHandler} />
       </View>
       <View style={styles.containerCounterList}>
         <FlatList
           data={counterList}
           keyExtractor={(item) => item.id.toString()}
-          extraData={iterator}
+          extraData={counterList}
           renderItem={({ item }) => {
             return (
               <View style={styles.itemList}>
