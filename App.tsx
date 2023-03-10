@@ -3,6 +3,7 @@ import { useState } from "react";
 import {
   Button,
   FlatList,
+  Pressable,
   ScrollView,
   StyleSheet,
   Text,
@@ -50,6 +51,11 @@ export default function App() {
     setIterator(0);
   };
 
+  const deleteCounterHandler = (id: number) => {
+    console.log("delete");
+    setCounterList((prev) => prev.filter((item) => item.id !== id));
+  };
+
   const addCountHandler = (index: number) => {
     var temp = counterList;
     temp[index].count = temp[index].count + 1;
@@ -88,11 +94,16 @@ export default function App() {
             return (
               <View style={styles.itemList}>
                 <Button title="+" onPress={() => addCountHandler(item.id)} />
-                <View style={styles.itemTextList}>
-                  <Text>{item.text}</Text>
-                  <Text>{item.count}</Text>
-                  <Text>{item.id}</Text>
-                </View>
+                <Pressable
+                  style={styles.itemCounter}
+                  onPress={() => deleteCounterHandler(item.id)}
+                >
+                  <View style={styles.itemTextList}>
+                    <Text>{item.text}</Text>
+                    <Text>{item.count}</Text>
+                    <Text>{item.id}</Text>
+                  </View>
+                </Pressable>
                 <Button title="-" onPress={() => reduceCountHandler(item.id)} />
               </View>
             );
@@ -106,7 +117,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#ffffff",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -126,6 +137,9 @@ const styles = StyleSheet.create({
     marginTop: 100,
     paddingTop: 20,
     backgroundColor: "green",
+  },
+  itemCounter: {
+    width: "auto",
   },
   itemList: {
     flex: 1,
