@@ -13,6 +13,39 @@ const DATA = [
   {
     name: "third counter",
   },
+  {
+    name: "four counter",
+  },
+  {
+    name: "five counter",
+  },
+  {
+    name: "six counter",
+  },
+  {
+    name: "seven counter",
+  },
+  {
+    name: "eight counter",
+  },
+  {
+    name: "nine counter",
+  },
+  {
+    name: "ten counter",
+  },
+  {
+    name: "eleven counter",
+  },
+  {
+    name: "tweleve counter",
+  },
+  {
+    name: "thirdten counter",
+  },
+  {
+    name: "fourten counter",
+  },
 ];
 
 export default function HomeCounter() {

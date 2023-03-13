@@ -1,14 +1,18 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
 export default function ButtonGroupList() {
+  function onPressHandler() {
+    console.log("pressed");
+  }
+
   return (
-    <View style={styles.buttonGroup}>
+    <Pressable style={styles.buttonGroup} onPress={onPressHandler}>
       <View style={styles.textContainer}>
         <Text style={styles.title}>List barang bekas</Text>
         <Text style={styles.date}>23 Februari 2023</Text>
       </View>
-    </View>
+    </Pressable>
   );
 }
 
