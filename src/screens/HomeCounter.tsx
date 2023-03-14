@@ -48,7 +48,12 @@ const DATA = [
   },
 ];
 
-export default function HomeCounter() {
+export default function HomeCounter({ navigation }: any) {
+  const pressHandler = () => {
+    console.log("pressed");
+    navigation.navigate("DetailCounter");
+  };
+
   return (
     <View>
       <Text>something</Text>
@@ -56,7 +61,7 @@ export default function HomeCounter() {
         {DATA.map((item, index) => {
           return (
             <View key={index} style={styles.buttonContainer}>
-              <ButtonGroupList />
+              <ButtonGroupList onPress={pressHandler} />
             </View>
           );
         })}
