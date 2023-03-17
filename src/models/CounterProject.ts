@@ -1,6 +1,6 @@
 import { ICounter, IProjectCounter } from "./types";
 
-export class CounterProject {
+export default class CounterProject {
   index: number;
   id: string;
   name: string;
@@ -13,5 +13,9 @@ export class CounterProject {
     this.name = name;
     this.date = date;
     this.countList = countList;
+  }
+
+  public get length() {
+    return this.countList.length;
   }
 }

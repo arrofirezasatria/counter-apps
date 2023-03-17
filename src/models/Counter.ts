@@ -1,6 +1,6 @@
-import { ICounter, IProjectCounter } from "./types";
+import { ICounter } from "./types";
 
-export class Counter {
+export default class Counter {
   index: number;
   id: string;
   name: string;
