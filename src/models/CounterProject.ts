@@ -1,3 +1,4 @@
+import { makeObservable } from "mobx";
 import { ICounter, IProjectCounter } from "./types";
 
 export default class CounterProject {
@@ -13,9 +14,12 @@ export default class CounterProject {
     this.name = name;
     this.date = date;
     this.countList = countList;
+
+    makeObservable(this,{index:true,id:true,name:true,date:true,countList:true})
   }
 
   public get length() {
     return this.countList.length;
   }
+
 }

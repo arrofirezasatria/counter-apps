@@ -1,4 +1,7 @@
+import { makeObservable } from "mobx";
+import { action } from "mobx/dist/internal";
 import { ICounter } from "./types";
+
 
 export default class Counter {
   index: number;
@@ -11,5 +14,17 @@ export default class Counter {
     this.id = id;
     this.name = name;
     this.count = count;
+
+    makeObservable(this,{index:true,id:true,name:true,count:true,addCounter:action,reduceCounter:action})
   }
+
+  addCounter(){
+    this.count++
+  }
+
+  reduceCounter(){
+    this.count--
+  }
+
+  
 }
