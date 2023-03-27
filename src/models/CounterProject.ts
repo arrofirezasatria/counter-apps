@@ -15,11 +15,16 @@ export default class CounterProject {
     this.date = date;
     this.countList = countList;
 
-    makeObservable(this,{index:true,id:true,name:true,date:true,countList:true})
+    makeObservable(this, {
+      index: true,
+      id: true,
+      name: true,
+      date: true,
+      countList: true,
+    });
   }
 
   public get length() {
     return this.countList.length;
   }
-
 }
