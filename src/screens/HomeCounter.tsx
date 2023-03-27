@@ -2,9 +2,12 @@ import React from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 import { Text } from "react-native";
 import ButtonGroupList from "../components/pages/home/ButtonGroupList";
+import { useCounterStore } from "../models/CounterStore";
 import { counterProjectData } from "../models/Data";
 
 export default function HomeCounter({ navigation }: any) {
+  const { projects } = useCounterStore();
+
   const pressHandler = () => {
     console.log("pressed");
     navigation.navigate("DetailCounter");

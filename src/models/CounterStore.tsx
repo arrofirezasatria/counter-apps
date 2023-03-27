@@ -4,11 +4,18 @@ import CounterProject from "./CounterProject";
 import { IProjectCounter } from "./types";
 
 export default class CounterStore {
-  projects: CounterProject;
-
-  constructor(project: CounterProject) {
+  constructor(projects: IProjectCounter[]) {
     makeAutoObservable(this);
-    this.projects = project;
+    this.projects = projects;
+  }
+
+  projects: IProjectCounter[] = [];
+  setProject(projects: IProjectCounter[]) {
+    this.projects = projects;
+  }
+
+  addProject(project: IProjectCounter) {
+    this.projects.push(project);
   }
 }
 
@@ -17,14 +24,18 @@ type Props = {
   project: CounterProject;
 };
 
-const TeamStoreContext = React.createContext<CounterStore>(
+const CounterStoreContext = React.createContext<CounterStore>(
   null as unknown as CounterStore
 );
+
+export const useCounterStore = () => useContext(CounterStoreContext);
 
 export function CounterStoreProvider({ children, project }: Props) {
   const store = useRef(new CounterStore(project));
 
-  <TeamStoreContext.Provider value={store.current}>
-    {children}
-  </TeamStoreContext.Provider>;
+  return (
+    <CounterStoreContext.Provider value={store.current}>
+      {children}
+    </CounterStoreContext.Provider>
+  );
 }

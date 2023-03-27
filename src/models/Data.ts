@@ -9,12 +9,10 @@ export const counterData: Array<ICounter> = [
   new Counter({ index: 3, id: "4", name: "barang4", count: 4 }),
 ];
 
-export const counterProjectData: IProjectCounter[] = [
-  {
-    index: 0,
-    id: "1",
-    name: "first",
-    date: new Date(),
-    countList: counterData,
-  },
-];
+export const counterProjectData: IProjectCounter = {
+  index: 0,
+  id: "1",
+  name: "first",
+  date: new Date(),
+  countList: counterData,
+};

@@ -8,6 +8,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import HomeCounter from "./src/screens/HomeCounter";
 import CounterDetailScreen from "./src/screens/CounterDetailScreen";
 import CounterScreen from "./src/screens/CounterScreen";
+import { CounterStoreProvider } from "./src/models/CounterStore";
+import { counterProjectData } from "./src/models/Data";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -15,16 +17,18 @@ export default function App() {
   return (
     <>
       <StatusBar style="light" />
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name={"Home"} component={HomeCounter} />
-          <Stack.Screen
-            name={"CounterScreen"}
-            component={CounterDetailScreen}
-          />
-          <Stack.Screen name={"DetailCounter"} component={CounterScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <CounterStoreProvider children={undefined} project={counterProjectData}>
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen name={"Home"} component={HomeCounter} />
+            <Stack.Screen
+              name={"CounterScreen"}
+              component={CounterDetailScreen}
+            />
+            <Stack.Screen name={"DetailCounter"} component={CounterScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </CounterStoreProvider>
     </>
   );
 }
