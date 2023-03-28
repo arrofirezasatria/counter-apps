@@ -17,7 +17,7 @@ export default function App() {
   return (
     <>
       <StatusBar style="light" />
-      <CounterStoreProvider children={undefined} project={counterProjectData}>
+      <CounterStoreProvider>
         <NavigationContainer>
           <Stack.Navigator>
             <Stack.Screen name={"Home"} component={HomeCounter} />

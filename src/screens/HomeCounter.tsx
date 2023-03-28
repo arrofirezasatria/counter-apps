@@ -17,13 +17,13 @@ export default function HomeCounter({ navigation }: any) {
     <View>
       <Text>something</Text>
       <ScrollView>
-        {counterProjectData.map((item, index) => {
+        {/* {counterProjectData.map((item, index) => {
           return (
             <View key={index} style={styles.buttonContainer}>
               <ButtonGroupList onPress={pressHandler} />
             </View>
           );
-        })}
+        })} */}
       </ScrollView>
     </View>
   );
