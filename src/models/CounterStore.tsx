@@ -21,7 +21,7 @@ export default class CounterStore {
 
 type Props = {
   children: React.ReactNode;
-  project: CounterProject;
+  project: IProjectCounter[];
 };
 
 const CounterStoreContext = React.createContext<CounterStore>(

@@ -23,8 +23,4 @@ export default class CounterProject {
       countList: true,
     });
   }
-
-  public get length() {
-    return this.countList.length;
-  }
 }
