@@ -2,13 +2,13 @@ import { StyleSheet } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { CounterStoreProvider } from "./src/models/CounterStore";
-import { counterProjectData } from "./src/models/Data";
+import { projectData } from "./src/models/Data";
 
 import Apps from "./src/Apps";
 import { IProjectCounter } from "./src/models/types";
 
 function getProjectsFromBackend(): IProjectCounter[] {
-  return [counterProjectData, counterProjectData];
+  return projectData;
 }
 
 export default function App() {

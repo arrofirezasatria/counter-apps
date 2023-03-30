@@ -10,7 +10,7 @@ import { ICounter } from "./models/types";
 export type RootStackParamList = {
   Home: undefined;
   CounterScreen: undefined;
-  DetailCounter: ICounter;
+  DetailCounter: ICounter[];
 };
 
 export default function App() {

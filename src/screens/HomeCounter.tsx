@@ -3,28 +3,14 @@ import { ScrollView, StyleSheet, View } from "react-native";
 import { Text } from "react-native";
 import ButtonGroupList from "../components/pages/home/ButtonGroupList";
 import { useCounterStore } from "../models/CounterStore";
-import { counterProjectData } from "../models/Data";
 import { ICounter } from "../models/types";
 
 export default function HomeCounter({ navigation }: any) {
   const { projects } = useCounterStore();
 
-  const pressHandler = () => {
+  const pressHandler = (counter: ICounter[]) => {
     console.log("pressed");
-    navigation.navigate("DetailCounter", [
-      {
-        index: 1,
-        id: "asd",
-        name: "asdsa",
-        count: 2,
-      },
-      {
-        index: 2,
-        id: "asd",
-        name: "asdsa",
-        count: 3,
-      },
-    ]);
+    navigation.navigate("DetailCounter", counter);
   };
 
   return (
@@ -34,7 +20,7 @@ export default function HomeCounter({ navigation }: any) {
         {projects.map((item, index) => {
           return (
             <View key={index} style={styles.buttonContainer}>
-              <ButtonGroupList onPress={pressHandler} />
+              <ButtonGroupList onPress={() => pressHandler(item.countList)} />
             </View>
           );
         })}
