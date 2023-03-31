@@ -1,3 +1,5 @@
+import Counter from "./Counter";
+
 export interface ICounter {
   index: number;
   id: string;
@@ -10,5 +12,5 @@ export interface IProjectCounter {
   id: string;
   name: string;
   date: Date;
-  countList: ICounter[];
+  countList: Counter[];
 }

@@ -6,11 +6,12 @@ import HomeCounter from "./screens/HomeCounter";
 import CounterDetailScreen from "./screens/CounterDetailScreen";
 import CounterScreen from "./screens/CounterScreen";
 import { ICounter } from "./models/types";
+import Counter from "./models/Counter";
 
 export type RootStackParamList = {
   Home: undefined;
   CounterScreen: undefined;
-  DetailCounter: ICounter[];
+  DetailCounter: Counter[];
 };
 
 export default function App() {
