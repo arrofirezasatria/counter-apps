@@ -7,11 +7,13 @@ import CounterDetailScreen from "./screens/CounterDetailScreen";
 import CounterScreen from "./screens/CounterScreen";
 import { ICounter } from "./models/types";
 import Counter from "./models/Counter";
+import AddProjectCounter from "./screens/AddProjectCounter";
 
 export type RootStackParamList = {
   Home: undefined;
   CounterScreen: undefined;
   DetailCounter: Counter[];
+  AddProjectCounter: undefined;
 };
 
 export default function App() {
@@ -28,6 +30,10 @@ export default function App() {
             component={CounterDetailScreen}
           />
           <Stack.Screen name={"DetailCounter"} component={CounterScreen} />
+          <Stack.Screen
+            name={"AddProjectCounter"}
+            component={AddProjectCounter}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>

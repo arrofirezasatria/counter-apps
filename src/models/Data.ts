@@ -1,6 +1,6 @@
 import Counter from "../models/Counter";
 import CounterProject from "./CounterProject";
-import { ICounter, IProjectCounter } from "./types";
+import { IProjectCounter } from "./types";
 import "react-native-get-random-values";
 import { v4 as uuidv4 } from "uuid";
 

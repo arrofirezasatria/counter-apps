@@ -29,6 +29,8 @@ export default class Counter {
   }
 
   reduceCounter() {
-    this.count--;
+    if (this.count > 0) {
+      this.count--;
+    }
   }
 }

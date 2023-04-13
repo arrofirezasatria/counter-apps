@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { Pressable, Button, ScrollView, StyleSheet, View } from "react-native";
 import { Text } from "react-native";
 import ButtonGroupList from "../components/pages/home/ButtonGroupList";
 import Counter from "../models/Counter";
@@ -14,6 +14,11 @@ export default function HomeCounter({ navigation }: any) {
     navigation.navigate("DetailCounter", counter);
   };
 
+  const addProjectHandler = () => {
+    console.log("to The AddCounter");
+    navigation.navigate("AddProjectCounter");
+  };
+
   return (
     <View>
       <Text>something</Text>
@@ -26,6 +31,9 @@ export default function HomeCounter({ navigation }: any) {
           );
         })}
       </ScrollView>
+      <View>
+        <Button title="add Project" onPress={addProjectHandler} />
+      </View>
     </View>
   );
 }
